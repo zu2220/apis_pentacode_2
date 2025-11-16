@@ -1,0 +1,327 @@
+import express from 'express';
+
+const router = express.Router();
+
+const candidatos = [
+  {
+    id: 1,
+    name: 'Keiko Fujimori',
+    party: 'Fuerza Popular',
+    number: 1,
+    photoUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Presidente',
+    birthDate: '25 de mayo de 1975',
+    birthPlace: 'Lima, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Boston University',
+        degree: 'Maestría en Administración de Empresas (MBA)',
+        country: 'Estados Unidos',
+      },
+      {
+        institution: 'Stony Brook University',
+        degree: 'Bachiller en Administración de Empresas',
+        country: 'Estados Unidos',
+      },
+    ],
+    experience: [
+      {
+        title: 'Congresista de la República',
+        organization: 'Congreso del Perú',
+        period: '2006 - 2011',
+      },
+      {
+        title: 'Presidenta de Fuerza Popular',
+        organization: 'Fuerza Popular',
+        period: '2010 - Presente',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Impulsar la inversión privada y reducir la burocracia.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Reforma educativa y mejora salarial para docentes.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Modernización de hospitales y acceso universal a la salud.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Fortalecimiento de la policía y lucha contra el crimen.',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'María Quispe Flores',
+    party: 'Frente Unido por el Progreso',
+    number: 2,
+    photoUrl: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Presidente',
+    birthDate: '10 de marzo de 1968',
+    birthPlace: 'Cusco, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Universidad Nacional de San Agustín',
+        degree: 'Doctorado en Sociología',
+        country: 'Perú',
+      },
+    ],
+    experience: [
+      {
+        title: 'Gobernadora Regional',
+        organization: 'Región Cusco',
+        period: '2015 - 2022',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Democratización de la economía y microfinanzas inclusivas.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Educación intercultural y fortalecimiento de lenguas originarias.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Medicina tradicional integrada al sistema de salud.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Patrullaje comunitario y justicia intercultural.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Carlos Mendoza Torres',
+    party: 'Alianza Democrática Nacional',
+    number: 3,
+    photoUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Presidente',
+    birthDate: '5 de junio de 1972',
+    birthPlace: 'Arequipa, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Universidad de San Agustín',
+        degree: 'Licenciatura en Derecho',
+        country: 'Perú',
+      },
+    ],
+    experience: [
+      {
+        title: 'Alcalde de Arequipa',
+        organization: 'Municipalidad de Arequipa',
+        period: '2019 - 2022',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Impulso a pequeñas y medianas empresas regionales.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Educación técnica vocacional para jóvenes.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Prevención de enfermedades no transmisibles.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Prevención del delito y reinserción social.',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Ana Castillo Vargas',
+    party: 'Partido Innovación Cívica',
+    number: 4,
+    photoUrl: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '15 de julio de 1980',
+    birthPlace: 'Lima, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 5,
+    name: 'Luis Rojas Vidal',
+    party: 'Frente Unido por el Progreso',
+    number: 5,
+    photoUrl: 'https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '20 de febrero de 1975',
+    birthPlace: 'Trujillo, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 6,
+    name: 'Sofía Díaz Chavez',
+    party: 'Alianza Democrática Nacional',
+    number: 6,
+    photoUrl: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '8 de agosto de 1978',
+    birthPlace: 'Tacna, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 7,
+    name: 'Ricardo Flores Medina',
+    party: 'Partido Innovación Cívica',
+    number: 7,
+    photoUrl: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '12 de noviembre de 1985',
+    birthPlace: 'Chimbote, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 8,
+    name: 'Patricia López Sánchez',
+    party: 'Frente Unido por el Progreso',
+    number: 8,
+    photoUrl: 'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '30 de enero de 1979',
+    birthPlace: 'Ica, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 9,
+    name: 'Miguel Fernández Castro',
+    party: 'Alianza Democrática Nacional',
+    number: 9,
+    photoUrl: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '25 de abril de 1982',
+    birthPlace: 'Huancayo, Perú',
+    nationality: 'Peruana',
+  },
+  {
+    id: 10,
+    name: 'Elena Torres Ramírez',
+    party: 'Partido Innovación Cívica',
+    number: 10,
+    photoUrl: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400',
+    position: 'Congresista',
+    birthDate: '18 de septiembre de 1983',
+    birthPlace: 'Pucallpa, Perú',
+    nationality: 'Peruana',
+  },
+];
+
+// GET - Obtener todos los candidatos
+router.get('/', (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      data: candidatos,
+      count: candidatos.length
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener candidatos',
+      error: error.message
+    });
+  }
+});
+
+// GET - Obtener un candidato por ID
+router.get('/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const candidato = candidatos.find(c => c.id === parseInt(id));
+
+    if (!candidato) {
+      return res.status(404).json({
+        success: false,
+        message: 'Candidato no encontrado'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: candidato
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener candidato',
+      error: error.message
+    });
+  }
+});
+
+// GET - Obtener candidatos por partido
+router.get('/partido/:party', (req, res) => {
+  try {
+    const { party } = req.params;
+    const candidatosPorPartido = candidatos.filter(c => 
+      c.party.toLowerCase().includes(party.toLowerCase())
+    );
+
+    if (candidatosPorPartido.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'No se encontraron candidatos para este partido'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      party: party,
+      data: candidatosPorPartido,
+      count: candidatosPorPartido.length
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener candidatos por partido',
+      error: error.message
+    });
+  }
+});
+
+// GET - Obtener candidatos por posición
+router.get('/posicion/:position', (req, res) => {
+  try {
+    const { position } = req.params;
+    const candidatosPorPosicion = candidatos.filter(c => 
+      c.position.toLowerCase().includes(position.toLowerCase())
+    );
+
+    if (candidatosPorPosicion.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'No se encontraron candidatos para esta posición'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      position: position,
+      data: candidatosPorPosicion,
+      count: candidatosPorPosicion.length
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener candidatos por posición',
+      error: error.message
+    });
+  }
+});
+
+export default router;
