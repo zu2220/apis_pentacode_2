@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2026000000001,
+    "datos_completos": "Keiko Fujimori",
+    "fecha_nacimiento": "25 de mayo de 1975",
+    "partido_politico": "Fuerza Popular",
+    "departamento_origen": "Lima",
+    "informacion_academica": "Boston University (Maestría en Administración de Empresas - MBA); Stony Brook University (Bachiller en Administración de Empresas)",
+    "experiencia_profesional": "Sin información adicional distinta a experiencia política.",
+    "experiencia_politica": "Congresista de la República del Perú (2006 - 2011); Presidenta de Fuerza Popular (2010 - Presente).",
+    "antecedentes_policiales_judiciales": "no disponible",
+    "fuentes": []
+  },
+  {
+    "id": 2026000000002,
+    "datos_completos": "María Quispe Flores",
+    "fecha_nacimiento": "10 de marzo de 1968",
+    "partido_politico": "Frente Unido por el Progreso",
+    "departamento_origen": "Cusco",
+    "informacion_academica": "Doctorado en Sociología - Universidad Nacional de San Agustín.",
+    "experiencia_profesional": "Gobernadora Regional de Cusco (2015 - 2022).",
+    "experiencia_politica": "Experiencia en gestión pública regional en la Región Cusco.",
+    "antecedentes_policiales_judiciales": "no disponible",
+    "fuentes": []
+  },
+  {
+    "id": 2026000000003,
+    "datos_completos": "Carlos Mendoza Torres",
+    "fecha_nacimiento": "5 de junio de 1972",
+    "partido_politico": "Alianza Democrática Nacional",
+    "departamento_origen": "Arequipa",
+    "informacion_academica": "Licenciatura en Derecho - Universidad de San Agustín.",
+    "experiencia_profesional": "Alcalde de Arequipa (2019 - 2022).",
+    "experiencia_politica": "Alcalde provincial de Arequipa con experiencia en administración municipal.",
+    "antecedentes_policiales_judiciales": "no disponible",
+    "fuentes": []
+  }
+]

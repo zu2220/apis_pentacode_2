@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import votacionRoutes from './routes/votacion.js';
 import candidatosRoutes from './routes/candidatos.js';
 import partidosRoutes from './routes/partidos.js';
+import indicadoresRouter from './routes/indicadores.js';
 
 const app = express();
 app.use(helmet());
@@ -20,6 +21,8 @@ app.use(limiter);
 app.use("/api/v1/votacion", votacionRoutes);
 app.use("/api/v1/candidatos", candidatosRoutes);
 app.use("/api/v1/partidos", partidosRoutes);
+app.use('/api/v1/indicadores', indicadoresRouter);
+
 
 
 app.use((err, req, res, next) => {
